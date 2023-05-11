@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Diabetes Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        select,
+        input[type="number"],
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #333;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Diabetes Prediction</h1>
+    <form method="POST" action="/predict">
+        <label for="gender">Gender:</label>
+        <select name="gender" id="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select><br><br>
+
+        <label for="age">Age:</label>
+        <input type="number" name="age" id="age" required><br><br>
+
+        <label for="hypertension">Hypertension:</label>
+        <select name="hypertension" id="hypertension">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br><br>
+
+        <label for="heart_disease">Heart Disease:</label>
+        <select name="heart_disease" id="heart_disease">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br><br>
+
+        <label for="smoking_history">Smoking History:</label>
+        <select name="smoking_history" id="smoking_history" required>
+            <option value="never">Never</option>
+            <option value="No Info">No Info</option>
+            <option value="current">Current</option>
+            <option value="former">Former</option>
+        </select><br><br>
+
+        <label for="bmi">BMI:</label>
+        <input type="number" name="bmi" id="bmi" step="0.01" required><br><br>
+
+        <label for="HbA1c_level">HbA1c Level:</label>
+        <input type="number" name="HbA1c_level" id="HbA1c_level" step="0.01" required><br><br>
+
+        <label for="blood_glucose_level">Blood Glucose Level:</label>
+        <input type="number" name="blood_glucose_level" id="blood_glucose_level" required><br><br>
+
+        <input type="submit" value="Predict">
+    </form>
+    {% if result_lr %}
+    <h2>Logistic Regression Prediction:</h2>
+    <p>{{ result_lr }}</p>
+    {% endif %}
+
+    {% if result_rf %}
+    <h2>Random Forest Prediction:</h2>
+    <p>{{ result_rf }}</p>
+    {% endif %}
+
+    {% if result_lr_balanced %}
+    <h2>Logistic Regression (Balanced) Prediction:</h2>
+    <p>{{ result_lr_balanced }}</p>
+    {% endif %}
+
+    {% if result_rf_balanced %}
+    <h2>Random Forest (Balanced) Prediction:</h2>
+    <p>{{ result_rf_balanced }}</p>
+    {% endif %}
+
+</body>
+
+</html>

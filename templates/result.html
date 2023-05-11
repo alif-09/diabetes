@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diabetes Prediction Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Diabetes Prediction Results</h1>
+    <h2>Prediction Results:</h2>
+    <ul>
+        <li>Logistic Regression: <span style="font-weight: bold;">{{ result_lr }}%</span></li>
+        <li>Random Forest: <span style="font-weight: bold;">{{ result_rf }}%</span></li>
+        <li>Logistic Regression (Balanced Data): <span style="font-weight: bold;">{{ result_lr_balanced }}%</span></li>
+        <li>Random Forest (Balanced Data): <span style="font-weight: bold;">{{ result_rf_balanced }}%</span></li>
+    </ul>
+</body>
+</html>
